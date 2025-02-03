@@ -18,8 +18,9 @@
     "esri/Map",  
     "esri/views/MapView",   
     "esri/Graphic",  
-    "esri/layers/GraphicsLayer"   
-    ], function(esriConfig,Map, MapView, Graphic, GraphicsLayer) {
+    "esri/layers/GraphicsLayer",
+    "esri/layers/FeatureLayer"   
+    ], function(esriConfig,Map, MapView, Graphic, GraphicsLayer, FeatureLayer) {
 
       esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurAToSzqkTfSfYwvNstkcR6B4ROIes9biB3If_N2cV-B6ipYFe5GxDfRQiFgMLzTH6209fM3ClJKM-5YVMCzcOH7TQJEzY_qITLgYuQ_O9Xc5pVnekDPHAHkxAHDnvNA75kDs-EylJ1L49ZjNHnKCjyjVY6f81joHIiGPr7X5LCYlO4x-mAxxUdWzT2Z-9uZmZbE5hUIYo-Gxuw7YZTMPp-UiNH6nce_c6lf5QtuX-hPTAT1_drTNujqi";
       const map = new Map({
@@ -33,6 +34,8 @@
           container: "viewDiv" // Div element
         });
 
+
+       // Point 
         const graphicsLayer = new GraphicsLayer();  
         map.add(graphicsLayer);
 
@@ -73,6 +76,8 @@
 
         graphicsLayer.add(pointGraphic);
 
+
+        // Polyline
         const polyline = {
         type: "polyline",
         paths: [
@@ -102,7 +107,7 @@
 
       graphicsLayer.add(polylineGraphic);
 
-      // --- POLYGON (Zilker Park) ---
+      // Polygon
       const polygon = {
         type: "polygon",
         rings: [
@@ -140,6 +145,11 @@
 
     graphicsLayer.add(polygonGraphic);    
         
+      // FeatureLayer
+      const usaeduLayer = new FeatureLayer({
+        url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Colleges_and_Universities_View/FeatureServer"
+        });
+        map.add(usaeduLayer);
     });
   </script>
 
