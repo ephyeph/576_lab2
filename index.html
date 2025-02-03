@@ -71,6 +71,8 @@
           popupTemplate: popupTemplate
         });
 
+        graphicsLayer.add(pointGraphic);
+
         const polyline = {
         type: "polyline",
         paths: [
@@ -138,8 +140,8 @@
         popupTemplate: { title: "{Name}", content: "{Description}" }
       });
 
+    graphicsLayer.add(polygonGraphic);    
         
-        graphicsLayer.add(pointGraphic);
     });
   </script>
 
