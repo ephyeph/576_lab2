@@ -183,6 +183,26 @@
 
       //adding the feature layer to the map
       map.add(usaairportLayer);
+
+      const heliRenderer = {
+        "type": "simple",
+        "symbol": {
+          "type": "picture-marker",
+          "url": "https://github.com/ephyeph/576_lab2/blob/main/helicopter.png",
+          "width": "18px",
+          "height": "18px"
+        }
+      }
+
+      // Define a pop-up for airportlayer
+      const heliportLayer = new FeatureLayer({
+      url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports_UW/FeatureServer",
+      renderer: heliRenderer,
+      definitionExpression: "Fac_Type = 'HELIPORT'" 
+    });
+
+      //adding the feature layer to the map
+      map.add(heliportLayer);
     });
   </script>
 
